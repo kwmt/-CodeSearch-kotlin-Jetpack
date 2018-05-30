@@ -36,9 +36,40 @@ android {
     }
 
     buildTypes {
+        debug {
+            applicationIdSuffix ".develop"
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    def githubClientId = System.getenv('GITHUB_CLIENT_ID')
+    def githubClientSecret = System.getenv('GITHUB_CLIENT_SECRET')
+    def adMobAppId = System.getenv('ADMOB_APP_ID')
+
+    flavorDimensions "default"
+
+    productFlavors {
+        staging {
+            dimension "default"
+            manifestPlaceholders = [appName: "@string/app_name"]
+            buildConfigField "String", "BASE_API_URL", "\"https://api.github.com\""
+            buildConfigField "String", "BASE_WEBVIEW_URL", "\"https://github.com\""
+            buildConfigField "String", "GITHUB_CLIENT_ID", "\"${githubClientId}\""
+            buildConfigField "String", "GITHUB_CLIENT_SECRET", "\"${githubClientSecret}\""
+            buildConfigField "String", "ADMOB_APP_ID", "\"${adMobAppId}\""
+        }
+        production {
+            dimension "default"
+            manifestPlaceholders = [appName: "@string/app_name"]
+            buildConfigField "String", "BASE_API_URL", "\"https://api.github.com\""
+            buildConfigField "String", "BASE_WEBVIEW_URL", "\"https://github.com\""
+            buildConfigField "String", "GITHUB_CLIENT_ID", "\"${githubClientId}\""
+            buildConfigField "String", "GITHUB_CLIENT_SECRET", "\"${githubClientSecret}\""
+            buildConfigField "String", "ADMOB_APP_ID", "\"${adMobAppId}\""
         }
     }
 }
