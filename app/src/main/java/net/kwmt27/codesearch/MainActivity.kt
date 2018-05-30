@@ -4,8 +4,10 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import net.kwmt27.codesearch.databinding.MainActivityBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,19 +19,17 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
         setSupportActionBar(binding.toolbar)
 
-        val navController = Navigation.findNavController(this, R.id.main_nav_host_fragment)
-        setupActionBar(navController)
-        setupNavigationMenu(navController)
+        findNavController(R.id.main_nav_host_fragment).apply {
+            setupActionBar(this)
+            setupNavigationMenu(this)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean =
-            NavigationUI.navigateUp(binding.drawerLayout, Navigation.findNavController(this, R.id.main_nav_host_fragment))
+            navigateUp(binding.drawerLayout, findNavController(R.id.main_nav_host_fragment))
 
-    private fun setupActionBar(navController: NavController) {
-        NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
-    }
+    private fun setupActionBar(navController: NavController) =
+            setupActionBarWithNavController(navController, binding.drawerLayout)
 
-    private fun setupNavigationMenu(navController: NavController) {
-        NavigationUI.setupWithNavController(binding.navView, navController)
-    }
+    private fun setupNavigationMenu(navController: NavController) = binding.navView.setupWithNavController(navController)
 }
