@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CodeSearch-kotlin-jetpack</string>
+    <string name="home">ホーム</string>
+    <string name="title_repository">Respository</string>
 </resources>

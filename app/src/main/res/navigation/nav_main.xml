@@ -8,5 +8,10 @@
         android:id="@+id/mainFragment"
         android:name="net.kwmt27.codesearch.ui.main.MainFragment"
         android:label="main_fragment"
-        tools:layout="@layout/main_fragment" />
+        tools:layout="@layout/main_fragment" ></fragment>
+    <fragment
+        android:id="@+id/repositoryListFragment"
+        android:name="net.kwmt27.codesearch.ui.repository.RepositoryListFragment"
+        android:label="repository_list_fragment"
+        tools:layout="@layout/repository_list_fragment" />
 </navigation>
