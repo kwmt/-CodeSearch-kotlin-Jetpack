@@ -3,16 +3,17 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "net.kwmt27.codesearch"
         minSdkVersion 23
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     dataBinding {
@@ -74,17 +75,93 @@ android {
     }
 }
 
+final moshi_version = '1.5.0'
+final dagger_version = '2.12'
+
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    implementation 'android.arch.lifecycle:extensions:1.1.1'
-    implementation 'com.android.support:support-v4:27.1.1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // Support
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha3'
+    implementation 'com.google.android.material:material:1.0.0-alpha3'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.1'
+    kapt 'androidx.databinding:databinding-compiler:3.2.0-alpha17'
+
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
     implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha01'
     implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-alpha01'
+
+    // architecture components
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation "android.arch.lifecycle:runtime:1.1.1"
+    implementation "android.arch.lifecycle:reactivestreams:1.1.1"
+    kapt "android.arch.lifecycle:compiler:1.1.1"
+
+    implementation "android.arch.persistence.room:runtime:1.1.1-rc1"
+    kapt "android.arch.persistence.room:compiler:1.1.1-rc1"
+
+    implementation "android.arch.paging:runtime:1.1.0-beta1"
+
+    // Firebase
+    implementation "com.google.firebase:firebase-core:16.0.0"
+    implementation "com.google.firebase:firebase-messaging:17.0.0"
+
+    // Network
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.3.0'
+    implementation "com.squareup.moshi:moshi:$moshi_version"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation "com.squareup.okhttp3:logging-interceptor:3.10.0"
+
+    // Structure
+    /// dagger
+    implementation "com.google.dagger:dagger:$dagger_version"
+    implementation("com.google.dagger:dagger-android:$dagger_version") {
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    }
+    implementation("com.google.dagger:dagger-android-support:$dagger_version") {
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    }
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+
+    /// Reactive
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    implementation 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
+//    implementation 'com.github.VictorAlbertos:RxActivityResult:0.4.5-2.x'
+
+    // Image
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    kapt 'com.github.bumptech.glide:compiler:4.7.1'
+
+    // Android Utility
+    implementation 'com.jakewharton.timber:timber:4.7.0'
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.0.5'
+    implementation 'com.deploygate:sdk:4.0.0'
+
+
+    // Test
+    // Dependencies for local unit tests
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.mockito:mockito-core:2.13.0"
+
+    kaptTest "com.google.dagger:dagger-compiler:$dagger_version"
+    kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
+
+    // Dependencies for Android unit tests
+    androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.2.0'
+
+    // Espresso UI Testing
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha3', {
+        exclude group: 'com.android.support', module: 'support-amannotations'
+        exclude module: 'support-annotations'
+    })
 }
