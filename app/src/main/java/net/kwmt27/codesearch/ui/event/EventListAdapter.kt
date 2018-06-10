@@ -1,9 +1,9 @@
 package net.kwmt27.codesearch.ui.event
 
+import android.support.v7.recyclerview.extensions.ListAdapter
+import android.support.v7.util.DiffUtil
+import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import net.kwmt27.codesearch.domain.model.Event
 
 class EventListAdapter : ListAdapter<Event, RecyclerView.ViewHolder>(REPO_COMPARATOR) {

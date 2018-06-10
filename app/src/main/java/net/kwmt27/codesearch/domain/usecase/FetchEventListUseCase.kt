@@ -3,7 +3,6 @@ package net.kwmt27.codesearch.domain.usecase
 import io.reactivex.Single
 import net.kwmt27.codesearch.domain.model.Event
 import net.kwmt27.codesearch.domain.repository.EventListRepository
-import net.kwmt27.codesearch.ui.event.EventViewModel
 
 /**
  *

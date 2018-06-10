@@ -16,8 +16,7 @@
 
 package net.kwmt27.codesearch.ui.event
 
-import androidx.lifecycle.LiveData
-import androidx.paging.PagedList
+import android.arch.lifecycle.LiveData
 import net.kwmt27.codesearch.domain.model.Event
 
 /**

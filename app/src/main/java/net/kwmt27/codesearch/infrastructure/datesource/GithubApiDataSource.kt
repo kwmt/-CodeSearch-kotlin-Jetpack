@@ -6,8 +6,6 @@ import net.kwmt27.codesearch.domain.model.Event
 import net.kwmt27.codesearch.domain.repository.EventListRepository
 import net.kwmt27.codesearch.infrastructure.api.GithubApi
 import net.kwmt27.codesearch.infrastructure.entity.mapper.EventEntityModelMapper
-import javax.inject.Inject
-import javax.inject.Singleton
 
 class GithubApiDataSource (
     private val githubApi: GithubApi

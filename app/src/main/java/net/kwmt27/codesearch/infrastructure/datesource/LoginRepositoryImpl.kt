@@ -3,7 +3,6 @@ package net.kwmt27.codesearch.infrastructure.datesource
 import io.reactivex.Single
 import net.kwmt27.codesearch.domain.repository.LoginRepository
 import net.kwmt27.codesearch.infrastructure.api.GithubApi
-import javax.inject.Inject
 
 class LoginRepositoryImpl (
     private val githubApi: GithubApi

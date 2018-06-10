@@ -1,7 +1,7 @@
 package net.kwmt27.codesearch.ui
 
+import android.arch.lifecycle.ViewModelProvider
 import android.content.Context
-import androidx.lifecycle.ViewModelProvider
 import net.kwmt27.codesearch.domain.repository.EventListRepository
 import net.kwmt27.codesearch.domain.usecase.FetchEventListUseCase
 import net.kwmt27.codesearch.domain.usecase.FetchEventListUseCaseImpl
@@ -16,7 +16,8 @@ object Injection {
      */
 //    private fun provideCache(context: Context): GithubLocalCache {
 //        val database = RepoDatabase.getInstance(context)
-//        return GithubLocalCache(database.reposDao(), Executors.newSingleThreadExecutor())
+//
+//   return GithubLocalCache(database.reposDao(), Executors.newSingleThreadExecutor())
 //    }
 
 

@@ -2,11 +2,11 @@
 
 package net.kwmt27.codesearch.ui.event
 
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import net.kwmt27.codesearch.R
 import net.kwmt27.codesearch.domain.model.Event
 

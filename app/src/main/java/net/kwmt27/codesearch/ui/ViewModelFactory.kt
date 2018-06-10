@@ -1,7 +1,7 @@
 package net.kwmt27.codesearch.ui
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProvider
 import net.kwmt27.codesearch.domain.usecase.FetchEventListUseCase
 import net.kwmt27.codesearch.ui.event.EventListViewModel
 

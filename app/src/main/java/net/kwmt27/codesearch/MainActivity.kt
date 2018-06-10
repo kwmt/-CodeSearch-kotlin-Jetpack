@@ -1,11 +1,11 @@
 package net.kwmt27.codesearch
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import android.support.design.widget.BottomNavigationView
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.navigation.ui.setupWithNavController
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         findNavController(R.id.main_nav_host_fragment).apply {
-            val navView: BottomNavigationView = findViewById<BottomNavigationView>(R.id.nav_view)
-            setupWithNavController(navView,this)
+            val navView: BottomNavigationView = findViewById(R.id.nav_view)
+            navView.setupWithNavController(this)
         }
     }
 }

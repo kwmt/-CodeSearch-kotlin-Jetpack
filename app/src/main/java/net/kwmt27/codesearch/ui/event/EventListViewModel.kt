@@ -1,6 +1,6 @@
 package net.kwmt27.codesearch.ui.event
 
-import androidx.lifecycle.*
+import android.arch.lifecycle.*
 import com.jakewharton.rxrelay2.BehaviorRelay
 import io.reactivex.Flowable
 import io.reactivex.Single

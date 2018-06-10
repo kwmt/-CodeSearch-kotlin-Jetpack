@@ -2,9 +2,6 @@ package net.kwmt27.codesearch.infrastructure.datesource
 
 import android.content.Context
 import android.graphics.drawable.BitmapDrawable
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat
 import com.jakewharton.rxrelay2.BehaviorRelay
 import net.kwmt27.codesearch.R
 import net.kwmt27.codesearch.domain.model.PushMessage
